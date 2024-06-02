@@ -56,17 +56,15 @@ export class PartyManagementAddEditComponent {
         this.addPartyForm.patchValue(response);
         if(response.anniversary_date){
           let date = response.anniversary_date.split('-');
-          console.log(date)
           this.addPartyForm.controls['anniversary_date'].setValue({year: parseInt(date[0]), month: parseInt(date[1]), day: parseInt(date[2])});
         }
         if(response.date_of_birth){
           let date = response.date_of_birth.split('-');
           this.addPartyForm.controls['date_of_birth'].setValue({year: parseInt(date[0]), month: parseInt(date[1]), day: parseInt(date[2])});
         }
-        console.log(this.addPartyForm.value)
       },
       error: (error)=>{
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }
@@ -121,7 +119,6 @@ export class PartyManagementAddEditComponent {
   }
 
   onAddPartySubmit() {
-    console.log(this.addPartyForm.value)
     const birthdate = this.addPartyForm.value.date_of_birth;
     if(birthdate){
       this.addPartyForm.controls['date_of_birth'].setValue(birthdate.year + '-' + birthdate.month + '-' + birthdate.day);
@@ -143,7 +140,6 @@ export class PartyManagementAddEditComponent {
     if (this.addPartyForm.value['id']) {
       this.partyManagementSvc.doUpdate(this.id, this.addPartyForm.value).subscribe({
         next: (response: any)=> {
-          console.log(response)
           if(response.success){
             this.toastr.success(response.msg);
             this.router.navigateByUrl('/party/list');  
@@ -152,13 +148,12 @@ export class PartyManagementAddEditComponent {
           }
         },
         error: (error)=>{
-          console.error(error.message);
+          this.toastr.error(error.error.msg);
         }
       })
     } else {
       this.partyManagementSvc.doSave(this.addPartyForm.value).subscribe({
         next: (response: any)=> {
-          console.log(response)
           if(response.success){
             this.toastr.success(response.msg);
             this.router.navigateByUrl('/party/list');  
@@ -167,7 +162,7 @@ export class PartyManagementAddEditComponent {
           }
         },
         error: (error)=>{
-          console.error(error.message);
+          this.toastr.error(error.error.msg);
         }
       })
       }

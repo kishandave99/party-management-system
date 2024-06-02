@@ -22,7 +22,7 @@ export class HeaderComponent {
         this.router.navigateByUrl('/');
       },
       error: (error) => {
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }

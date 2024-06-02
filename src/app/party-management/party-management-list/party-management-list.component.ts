@@ -26,10 +26,10 @@ export class PartyManagementListComponent implements OnInit {
     this.partyManagementSvc.doGetList().subscribe({
       next: (response: any)=> {
         this.parties = response;
-        console.log(response)
+        this.toastr.success(response.msg);
       },
       error: (error)=>{
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }
@@ -63,7 +63,7 @@ export class PartyManagementListComponent implements OnInit {
             this.doGetList();
           },
           error: (error)=>{
-            console.error(error.message);
+            this.toastr.error(error.error.msg);
           }
         })        
       }
@@ -78,7 +78,7 @@ export class PartyManagementListComponent implements OnInit {
         this.router.navigateByUrl('/');
       },
       error: (error) => {
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }

@@ -9,7 +9,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
     //handle your auth error or rethrow
-    console.log(err)
     if (err.status === 401) {
       localStorage.removeItem('token');
       this.router.navigateByUrl('/');
@@ -18,7 +17,6 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log("--- Hello ----");
     if (localStorage.getItem("token")) {
       request = request.clone({
         setHeaders: {

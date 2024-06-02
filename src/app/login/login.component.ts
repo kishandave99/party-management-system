@@ -34,8 +34,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/party/list')
       },
       error: (error)=>{
-        this.toastr.error(error.detail);
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }

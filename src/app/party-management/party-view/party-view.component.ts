@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Party } from 'src/app/interface';
 import { PartyManagementService } from 'src/app/party-management.service';
 
@@ -13,7 +14,7 @@ export class PartyViewComponent implements OnInit {
   @Input() id: string = '';
   partyView!: Party;
 
-  constructor(private partyManagementSvc: PartyManagementService, private router: Router){
+  constructor(private partyManagementSvc: PartyManagementService, private router: Router, private toastr: ToastrService){
   }
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class PartyViewComponent implements OnInit {
         this.partyView = response;
       },
       error: (error)=>{
-        console.error(error.message);
+        this.toastr.error(error.error.msg);
       }
     })
   }
