@@ -1,0 +1,16 @@
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    border-color: transparent;
+}
+
+.subtitle {
+    margin-left: 13px; 
+    font-weight: 500;
+}
+
+.error-msg {
+    color: red;
+}
+
+.cancle-btn {
+    margin-left: 15px;
+}

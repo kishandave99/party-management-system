@@ -1,0 +1,273 @@
+<div class="container">
+    <app-header></app-header>
+    <!-- Add Party Form -->
+    <div class="card">
+        <div class="card-header">Add Party</div>
+        <div class="card-body">
+            <form [formGroup]="addPartyForm" #fForm="ngForm" (ngSubmit)="onAddPartySubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" formControlName="name"
+                                placeholder="Enter name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="company_name">Company Name <span class="error-msg">*</span></label>
+                            <input type="text" class="form-control" id="company_name" formControlName="company_name"
+                                placeholder="Enter Company name">
+                            <div *ngIf="addPartyForm.get('company_name')?.invalid && (addPartyForm.get('company_name')?.dirty || addPartyForm.get('company_name')?.touched || fForm.submitted)"
+                                class="text-danger">
+                                <div *ngIf="addPartyForm.get('company_name')?.errors?.required">Company name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="mobile_no">Mobile <span class="error-msg">*</span></label>
+                            <input type="text" class="form-control" id="mobile_no" formControlName="mobile_no"
+                                placeholder="Enter Mobile name">
+                            <div *ngIf="addPartyForm.get('mobile_no')?.invalid && (addPartyForm.get('mobile_no')?.dirty || addPartyForm.get('mobile_no')?.touched  || fForm.submitted)"
+                                class="text-danger">
+                                <div *ngIf="addPartyForm.get('mobile_no')?.errors?.required">Mobile No is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="telephone_no">Telephone No.</label>
+                            <input type="text" class="form-control" id="telephone_no" formControlName="telephone_no"
+                                placeholder="Enter Telephone no">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="whatsapp_no">Whatsapp No.</label>
+                            <input type="text" class="form-control" id="whatsapp_no" formControlName="whatsapp_no"
+                                placeholder="Enter Whatsapp no">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" formControlName="email"
+                                placeholder="Enter Company name">
+                            <div *ngIf="addPartyForm.get('email')?.invalid && (addPartyForm.get('email')?.dirty || addPartyForm.get('email')?.touched  || fForm.submitted)"
+                                class="text-danger">
+                                <div *ngIf="addPartyForm.get('email')?.errors?.email">Email is Incorrect.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="remark">Remark</label>
+                            <input type="text" class="form-control" id="remark" formControlName="remark"
+                                placeholder="Enter remark">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="remark">Birthdate</label>
+                            <div class="input-group date" id="datepicker">
+                                <div class="input-group">
+                                    <input
+                                        class="form-control"
+                                        placeholder="yyyy-mm-dd"
+                                        name="dp"
+                                        formControlName="date_of_birth"
+                                        ngbDatepicker
+                                        #date_of_birth="ngbDatepicker"
+                                    >
+                                    <button class="btn btn-outline-secondary bi bi-calendar-date" (click)="date_of_birth.toggle()" type="button"></button>                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="remark">Anniversary Date</label>
+                            <div class="input-group date" id="anniversary_date">
+                                <div class="input-group">
+                                    <input
+                                        class="form-control"
+                                        placeholder="yyyy-mm-dd"
+                                        name="dp"
+                                        formControlName="anniversary_date"
+                                        ngbDatepicker
+                                        #anniversary_date="ngbDatepicker"
+                                    >
+                                    <button class="btn btn-outline-secondary bi bi-calendar-date" (click)="anniversary_date.toggle()" type="button"></button>                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="gstin">GSTIN</label>
+                            <input type="text" class="form-control" id="gstin" formControlName="gstin"
+                                placeholder="Enter gstin">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="pan_no">Pan No</label>
+                            <input type="text" class="form-control" id="pan_no" formControlName="pan_no"
+                                placeholder="Enter pan_no">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <div class="form-group">
+                            <label for="pan_no">Apply TDS</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="apply_tds" formControlName="apply_tds" [value]="true" id="apply_tdsYes" >
+                                <label class="form-check-label" for="apply_tdsYes">
+                                  Yes
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="apply_tds" formControlName="apply_tds" [value]="false" id="apply_tdsNo">
+                                <label class="form-check-label" for="apply_tdsNo">
+                                  No
+                                </label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-2 mb-2">
+                        <div class="form-group">
+                            <label for="credit_limit">Credit Limit</label>
+                            <input type="text" class="form-control" id="credit_limit" formControlName="credit_limit"
+                                placeholder="Enter credit limit">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-2">
+                    <div class="card-header">Address <button (click)="addAddress()" class="btn btn-lg float-end"><i class="bi bi-plus-circle"></i></button> </div>
+                    <div formArrayName="address">
+                        <div class="card-body" *ngFor="let addres of address.controls; let i = index;" [formGroupName]="i">
+                            <span class="subtitle">Address {{i + 1}}  <button (click)="removeAddress(i)" class="btn btn-lg float-end"><i class="bi bi-dash-circle"></i></button></span> 
+                            <div class="row mt-2">
+                                <ng-container >
+                                    <div class="col-md-6 mt-2" >
+                                        <div class="form-group">
+                                            <label for="address_line_1">Address Line 1</label>
+                                            <input type="text" class="form-control" id="address_line_1" formControlName="address_line_1"
+                                                placeholder="Enter Address Line 1">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="address_line_2">Address Line 2</label>
+                                            <input type="text" class="form-control" id="address_line_2" formControlName="address_line_2"
+                                                placeholder="Enter Address Line 2">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="country">country</label>
+                                            <input type="text" class="form-control" id="country" formControlName="country"
+                                                placeholder="Enter country">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="state">state</label>
+                                            <input type="text" class="form-control" id="state" formControlName="state"
+                                                placeholder="Enter state">
+                                        </div>
+                                    </div>            
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="city">city</label>
+                                            <input type="text" class="form-control" id="city" formControlName="city"
+                                                placeholder="Enter city">
+                                        </div>
+                                    </div>            
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="pincode">pincode</label>
+                                            <input type="text" class="form-control" id="pincode" formControlName="pincode"
+                                                placeholder="Enter pincode">
+                                        </div>
+                                    </div>            
+    
+                                </ng-container>
+                            </div>
+            
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="card mt-2">
+                    <div class="card-header">Bank <button (click)="addBank()" class="btn btn-lg float-end"><i class="bi bi-plus-circle"></i></button> </div>
+                    <div formArrayName="bank">
+                        <div class="card-body" *ngFor="let bankk of bank.controls; let i = index;" [formGroupName]="i">
+                            <span style="margin-left: 13px; font-weight: 500;">Bank {{i + 1}}  <button (click)="removeBank(i)" class="btn btn-lg float-end"><i class="bi bi-dash-circle"></i></button></span> 
+                            <div class="row mt-2">
+                                <ng-container >
+                                    <div class="col-md-6 mt-2" >
+                                        <div class="form-group">
+                                            <label for="bank_ifsc_code">Bank IFSC Code</label>
+                                            <input type="text" class="form-control" id="bank_ifsc_code" formControlName="bank_ifsc_code"
+                                                placeholder="Enter Bank IFSC Code">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="bank_name">Bank Name</label>
+                                            <input type="text" class="form-control" id="bank_name" formControlName="bank_name"
+                                                placeholder="Enter Bank Name">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="branch_name">Branch Name</label>
+                                            <input type="text" class="form-control" id="branch_name" formControlName="branch_name"
+                                                placeholder="Enter Branch Name">
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="account_no">Account No</label>
+                                            <input type="text" class="form-control" id="account_no" formControlName="account_no"
+                                                placeholder="Enter Account No">
+                                        </div>
+                                    </div>            
+                                    <div class="col-md-6 mt-2">
+                                        <div class="form-group">
+                                            <label for="account_holder_name">Account Holder Name</label>
+                                            <input type="text" class="form-control" id="account_holder_name" formControlName="account_holder_name"
+                                                placeholder="Enter Account Holder Name">
+                                        </div>
+                                    </div>                
+                                </ng-container>
+                            </div>
+            
+                        </div>    
+                    </div>
+                </div>
+
+                <!-- <div class="card mt-2">
+                    <div class="card-header">Image Upload</div>
+                    <div class="card-body" >
+                        <div class="image-upload">
+                            <input type="file" (change)="onFileSelected($event)" accept="image/png, image/jpeg" />
+                            <div *ngIf="imagePreview">
+                              <span class="subtitle"> Preview:</span>
+                              <br  />
+                              <img [src]="imagePreview" class="mt-2" alt="Image Preview" width="300">
+                            </div>
+                          </div>                          
+                    </div>
+                </div> -->
+
+                <button type="submit" class="btn btn-primary mt-2 mr-2">Add Party</button>
+                <button [routerLink]="['/party/list']" class="btn btn-primary cancle-btn mt-2">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
