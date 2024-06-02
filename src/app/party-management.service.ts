@@ -27,7 +27,7 @@ export class PartyManagementService {
   }
 
   doDelete(id: string){
-    return this.http.delete(`${environment.url}/party/id?=` + id);
+    return this.http.delete(`${environment.url}/party/?id=${id}`);
   }
 
 }

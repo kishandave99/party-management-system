@@ -5,7 +5,7 @@ export interface Login {
 }
 
 export interface Party {
-    id?: string,
+    id: string,
     name?: string,
     company_name: string,
     mobile_no: string,
@@ -20,8 +20,9 @@ export interface Party {
     pan_no?: string,
     apply_tds: Boolean,
     credit_limit?: Number,
-    address?: Address,
-    bank?: Bank,
+    address?: Address[],
+    bank?: Bank[],
+    bank_id?: Bank[]
     image: any
 }
 

@@ -1,1 +1,47 @@
-<p>party-view works!</p>
+<div class="container" *ngIf="partyView">
+    <app-header></app-header>
+    <section class="student-info">
+        <div class="personal-info-grid">
+            <div><strong>Name:</strong> {{partyView.name}}</div>
+            <div><strong>Company Name:</strong> {{partyView.company_name}}</div>
+            <div><strong>Mobile:</strong> {{partyView.mobile_no}}</div>
+            <div><strong>Telephone No.:</strong> {{partyView.telephone_no}}</div>
+            <div><strong>Whatsapp No.:</strong> {{partyView.whatsapp_no}}</div>
+            <div><strong>Email:</strong> {{partyView.email}}</div>
+            <div><strong>Remark:</strong> {{partyView.remark}}</div>
+            <div><strong>Date of Birth:</strong> {{partyView.date_of_birth}}</div>
+            <div><strong>Anniversary Date</strong> {{partyView.anniversary_date}}</div>
+            <div><strong>GSTIN:</strong>  {{partyView.gstin}}</div>
+            <div><strong>Pan No:</strong>  {{partyView.pan_no}}</div>
+            <div><strong>Apply TDS:</strong>  {{partyView.apply_tds}}</div>
+            <div><strong>Credit Limit</strong>  {{partyView.credit_limit}}</div>
+
+        </div>
+    </section>
+    <section class="academic-info mt-2">
+        <h3>Address</h3>
+        <div class="personal-info-grid" *ngFor="let addres of partyView.address; let i = index;">
+            <h4 class="mt-2">Address {{i + 1}} </h4>
+            <div><strong>Address Line 1:</strong>  {{addres.address_line_1}}</div>
+            <div><strong>Address Line 2:</strong>  {{addres.address_line_2}}</div>
+            <div><strong>Country:</strong>  {{addres.country}}</div>
+            <div><strong>State</strong>  {{addres.state}}</div>
+            <div><strong>City:</strong>  {{addres.city}}</div>
+            <div><strong>Pincode:</strong>  {{addres.pincode}}</div>
+        </div>
+        <p class="text-center error-msg" *ngIf="partyView.address?.length === 0">there is no address added</p>
+    </section>
+    <section class="academic-info mt-2">
+        <h3>Bank</h3>
+        <div class="personal-info-grid" *ngFor="let bank of partyView.bank_id; let i = index;">
+            <h4 class="mt-2">Bank {{i + 1}} </h4>
+            <div><strong>Bank IFSC Code:</strong>  {{bank.bank_ifsc_code}}</div>
+            <div><strong>Bank Name:</strong>  {{bank.bank_name}}</div>
+            <div><strong>Branch Name:</strong>  {{bank.branch_name}}</div>
+            <div><strong>Account No: </strong>  {{bank.account_no}}</div>
+            <div><strong>Account Holder Name:</strong>  {{bank.account_holder_name}}</div>
+        </div>
+        <p class="text-center error-msg" *ngIf="partyView.bank_id?.length === 0">there is no bank added</p>
+    </section>
+
+</div>

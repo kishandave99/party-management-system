@@ -18,6 +18,7 @@ export class HeaderComponent {
     this.loginSvc.doLogout().subscribe({
       next: (response: any) => {
         this.toastr.success(response.status);
+        localStorage.removeItem('token')
         this.router.navigateByUrl('/');
       },
       error: (error) => {
